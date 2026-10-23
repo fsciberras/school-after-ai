@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A school curriculum for ages 5 to 18, built for the AI era: five strands, five AI-use levels, and grades AI cant fake. English and French.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A school built for the AI era">
+<meta property="og:description" content="Five strands, five AI-use levels, and grades AI cant fake. Ages 5 to 18, in English and French.">
+<meta property="og:url" content="https://fsciberras.github.io/school-after-ai/">
+<meta property="og:image" content="https://fsciberras.github.io/school-after-ai/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@FSciberras">
+<meta name="twitter:title" content="A school built for the AI era">
+<meta name="twitter:description" content="Five strands, five AI-use levels, and grades AI cant fake. Ages 5 to 18, in English and French.">
+<meta name="twitter:image" content="https://fsciberras.github.io/school-after-ai/og.png">
+<style>img{max-width:100%}[hidden]{display:none!important}footer a{color:var(--margin)}</style>
+<title>School for the AI Era</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a French exercise book. Seyès ruling behind the cover, one reading column, wide bands for the charts and the timetable. */
+:root{
+  --paper:#FBFBFE; --paper-2:#F1F3FA; --ink:#1B2540; --ink-2:#4A5576; --rule:#DCE2F0;
+  --seyes:#A9BCE6; --margin:#D6455D;
+  --s-a:#2F4A8A; --s-b:#2C8580; --s-c:#D6455D; --s-d:#B9821A; --s-e:#7A4E9E;
+  --l0:#E4E7EF; --l1:#CAD6F1; --l2:#9DB3E0; --l3:#5E7FC4; --l4:#2F4A8A; --l-ink:#1B2540; --l-ink-strong:#FFFFFF;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Literata", Georgia, "Times New Roman", serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121828; --paper-2:#1A2236; --ink:#E8ECF7; --ink-2:#A6B0CB; --rule:#2A3550;
+  --seyes:#2E3C62; --margin:#F06A80;
+  --s-a:#7E9BE0; --s-b:#5CC2BB; --s-c:#F06A80; --s-d:#E2AE4A; --s-e:#B48BDB;
+  --l0:#262F45; --l1:#2F3F68; --l2:#3F5793; --l3:#6283CF; --l4:#9DB5EE; --l-ink:#E8ECF7; --l-ink-strong:#121828;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121828; --paper-2:#1A2236; --ink:#E8ECF7; --ink-2:#A6B0CB; --rule:#2A3550;
+  --seyes:#2E3C62; --margin:#F06A80;
+  --s-a:#7E9BE0; --s-b:#5CC2BB; --s-c:#F06A80; --s-d:#E2AE4A; --s-e:#B48BDB;
+  --l0:#262F45; --l1:#2F3F68; --l2:#3F5793; --l3:#6283CF; --l4:#9DB5EE; --l-ink:#E8ECF7; --l-ink-strong:#121828;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.col{max-width:680px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(1.7rem,3.4vw,2.3rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0}
+.label{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.lead{font-size:1.12rem;color:var(--ink-2);max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--margin);outline-offset:3px;border-radius:4px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.bar .name{font-family:var(--f-display);font-weight:700;font-size:.95rem}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;gap:2px}
+.lang button{font-family:var(--f-mono);font-size:.78rem;border:0;background:none;color:var(--ink-2);padding:5px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* cover with Seyès ruling */
+.cover{position:relative;border-bottom:1px solid var(--rule);overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right,transparent 0 calc(12% - 1px),var(--margin) calc(12% - 1px) 12%,transparent 12%),
+    linear-gradient(to bottom,color-mix(in srgb,var(--seyes) 90%,transparent) 1px,transparent 1px),
+    linear-gradient(to bottom,color-mix(in srgb,var(--seyes) 40%,transparent) 1px,transparent 1px),
+    linear-gradient(to right,color-mix(in srgb,var(--seyes) 55%,transparent) 1px,transparent 1px);
+  background-size:100% 100%,100% 32px,100% 8px,32px 100%;
+  -webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent);mask-image:linear-gradient(to bottom,#000 30%,transparent);
+  opacity:.75;pointer-events:none}
+.cover .wrap{position:relative;padding-block:72px 64px;display:grid;gap:22px}
+.cover h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em;max-width:14ch}
+.cover h1 em{font-style:normal;color:var(--margin)}
+.cover .lead{font-size:clamp(1.08rem,2vw,1.28rem);color:var(--ink);max-width:56ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.toc a{font-family:var(--f-mono);font-size:.76rem;text-decoration:none;border:1px solid var(--rule);background:var(--paper);padding:6px 10px;border-radius:6px;color:var(--ink-2)}
+.toc a:hover{color:var(--ink);border-color:var(--ink-2)}
+
+section{padding-block:72px;border-bottom:1px solid var(--rule);scroll-margin-top:56px}
+.head{display:grid;gap:14px;margin-bottom:36px}
+
+/* principles */
+.principles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px 40px;counter-reset:p}
+.principles li{display:grid;grid-template-columns:44px 1fr;gap:6px 14px;counter-increment:p}
+.principles li::before{content:counter(p);grid-row:span 2;font-family:var(--f-display);font-weight:800;font-size:2rem;line-height:1;color:var(--margin)}
+.principles h3{font-size:1.08rem}
+.principles p{color:var(--ink-2);font-size:.98rem}
+
+/* profile */
+.profile{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.cap{background:var(--paper);padding:22px;display:grid;gap:10px;align-content:start}
+.cap p{font-size:.96rem}
+.cap .proof{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2);border-top:1px dashed var(--rule);padding-top:10px;letter-spacing:.02em}
+
+/* strands */
+.strands{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.strand{border:1px solid var(--rule);border-top:4px solid var(--c);border-radius:8px;padding:16px;display:grid;gap:10px;align-content:start;background:var(--paper)}
+.strand.new{background:color-mix(in srgb,var(--c) 9%,var(--paper));border-color:color-mix(in srgb,var(--c) 45%,var(--rule));border-top-color:var(--c)}
+.strand .letter{font-family:var(--f-mono);font-size:.74rem;color:var(--c)}
+.strand ul{margin:0;padding:0;list-style:none;font-size:.92rem;color:var(--ink-2);display:grid;gap:3px}
+.strand .tag{justify-self:start;font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;background:var(--c);color:var(--paper);padding:2px 7px;border-radius:4px}
+.base{margin-top:12px;border:1px dashed var(--ink-2);border-radius:8px;padding:12px 16px;font-size:.95rem;text-align:center;background:var(--paper-2)}
+@media (max-width:860px){.strands{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.strands{grid-template-columns:1fr}}
+
+.share{margin-top:48px;display:grid;gap:14px}
+.share-row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.share-row .who{font-family:var(--f-display);font-weight:700;font-size:.95rem}
+.share-row .who small{display:block;font-family:var(--f-mono);font-weight:500;font-size:.72rem;color:var(--ink-2)}
+.stack{display:flex;height:34px;border-radius:6px;overflow:hidden;gap:2px}
+.stack span{background:var(--c);color:var(--paper);font-family:var(--f-mono);font-size:.74rem;display:flex;align-items:center;justify-content:center;min-width:0;white-space:nowrap;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.86rem;color:var(--ink-2)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c);margin-right:6px;vertical-align:0}
+@media (max-width:560px){.share-row{grid-template-columns:1fr;gap:6px}}
+
+/* progression */
+.stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.stage{display:grid;gap:14px;align-content:start;padding-top:16px;border-top:2px solid var(--ink)}
+.stage .ages{font-family:var(--f-mono);font-size:.8rem;color:var(--margin)}
+.stage dl{margin:0;display:grid;gap:12px}
+.stage dt{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2)}
+.stage dd{margin:2px 0 0;font-size:.95rem}
+@media (max-width:820px){.stages{grid-template-columns:1fr}}
+.milestones{margin-top:48px;display:grid;gap:0;border-left:2px solid var(--s-c);padding-left:0}
+.ms{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:12px 0 12px 20px;position:relative}
+.ms::before{content:"";position:absolute;left:-7px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--s-c)}
+.ms b{font-family:var(--f-display);font-size:1.1rem}
+.ms p{font-size:.96rem}
+
+/* AI levels staircase */
+.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:end}
+.lvl{border-radius:8px 8px 0 0;padding:16px 14px;display:grid;gap:8px;align-content:start;background:var(--bg);color:var(--fg)}
+.lvl .n{font-family:var(--f-mono);font-size:.8rem;opacity:.85}
+.lvl h3{font-size:1.15rem}
+.lvl p{font-size:.88rem;line-height:1.45}
+.lvl .ex{font-size:.8rem;opacity:.85;font-style:italic}
+.lvl:nth-child(1){min-height:220px}.lvl:nth-child(2){min-height:255px}.lvl:nth-child(3){min-height:290px}.lvl:nth-child(4){min-height:325px}.lvl:nth-child(5){min-height:360px}
+@media (max-width:820px){.levels{grid-template-columns:1fr}.lvl{min-height:0!important;border-radius:8px}}
+.rules{margin:36px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px 32px}
+.rules li{padding-left:22px;position:relative;font-size:.96rem}
+.rules li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--margin)}
+
+/* assessment */
+.assess-bar{display:flex;gap:2px;height:46px;border-radius:8px;overflow:hidden;margin-bottom:22px}
+.assess-bar span{background:color-mix(in srgb,var(--ink) var(--o),var(--paper));color:var(--ink);font-family:var(--f-mono);font-size:.8rem;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.assess-bar span.dark{color:var(--paper)}
+.assess{display:grid;gap:0;border-top:1px solid var(--rule)}
+.arow{display:grid;grid-template-columns:64px 1.1fr 1.4fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.arow .pct{font-family:var(--f-display);font-weight:800;font-size:1.5rem;font-variant-numeric:tabular-nums}
+.arow h3{font-size:1rem}
+.arow p{font-size:.95rem;color:var(--ink-2)}
+@media (max-width:640px){.arow{grid-template-columns:56px 1fr}.arow p{grid-column:2}}
+.more{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.more div{background:var(--paper-2);border-radius:8px;padding:18px;display:grid;gap:6px}
+.more p{font-size:.94rem;color:var(--ink-2)}
+
+/* timetable */
+.tt-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:10px}
+table.tt{border-collapse:collapse;width:100%;min-width:760px;font-size:.86rem}
+.tt th{font-family:var(--f-mono);font-weight:500;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);text-align:left;padding:10px;border-bottom:1px solid var(--rule)}
+.tt td{padding:6px;vertical-align:top;border-bottom:1px solid var(--rule)}
+.tt td.time{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2);white-space:nowrap;padding:12px 10px;font-variant-numeric:tabular-nums}
+.tt .cell{border-radius:6px;padding:8px 9px;background:var(--bg,var(--paper-2));color:var(--fg,var(--ink));line-height:1.35;height:100%;display:grid;gap:4px}
+.tt .cell small{font-family:var(--f-mono);font-size:.68rem;opacity:.85}
+.keys{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-size:.84rem;color:var(--ink-2)}
+.keys span{display:inline-flex;align-items:center;gap:6px}
+.keys i{width:14px;height:14px;border-radius:3px;background:var(--bg);display:inline-block}
+
+/* rollout */
+.road{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;align-items:stretch}
+.phase{border:1px solid var(--rule);border-radius:8px;padding:16px;display:grid;gap:10px;align-content:start;background:var(--paper)}
+.phase .yr{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
+.phase ul{margin:0;padding-left:18px;font-size:.92rem;display:grid;gap:4px}
+.gate{position:relative;display:flex;align-items:center;justify-content:center}
+.gate::before{content:"";width:18px;height:18px;transform:rotate(45deg);background:color-mix(in srgb,var(--margin) 20%,var(--paper));border:2px solid var(--margin)}
+.gates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+.gates div{display:grid;grid-template-columns:22px 1fr;gap:4px 10px;font-size:.92rem}
+.gates div::before{content:"";width:12px;height:12px;transform:rotate(45deg);margin:6px 0 0 4px;border:2px solid var(--margin);grid-row:span 2}
+.gates b{font-family:var(--f-display)}
+.gates p{color:var(--ink-2)}
+@media (max-width:860px){.road{grid-template-columns:1fr}.gate{height:34px}.gates{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;margin-top:56px}
+@media (max-width:860px){.two{grid-template-columns:1fr;gap:36px}}
+.two ul{margin:14px 0 0;padding-left:20px;display:grid;gap:8px;font-size:.96rem}
+.risks{margin-top:14px;display:grid;border-top:1px solid var(--rule)}
+.risk{display:grid;grid-template-columns:1fr 1.2fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:.93rem}
+.risk b{font-weight:600}
+.risk p{color:var(--ink-2)}
+@media (max-width:520px){.risk{grid-template-columns:1fr;gap:4px}}
+
+footer{padding-block:40px 64px;color:var(--ink-2);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+
+<div class="bar"><div class="wrap">
+  <span class="name" id="barName"></span>
+  <div class="lang" role="group" aria-label="Language / Langue">
+    <button type="button" id="btn-en" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" id="btn-fr" data-lang="fr" aria-pressed="false">FR</button>
+  </div>
+</div></div>
+<main id="app"></main>
+
+<script>
+const T = {
+en:{
+  bar:"School for the AI Era",
+  eyebrow:"A curriculum for ages 5 to 18",
+  title:"A school built for the <em>AI era</em>",
+  lead:"AI can now produce the essay, the code and the worked solution in seconds, so a school that grades finished outputs is grading the machine. This curriculum keeps what AI cannot give a child, and teaches kids to direct and check machines.",
+  meta:["Florent Sciberras","October 2026"],
+  toc:[["principles","Principles"],["profile","Graduate profile"],["strands","Strands"],["stages","By stage"],["levels","AI in class"],["assessment","Assessment"],["week","A week"],["rollout","Rollout"]],
+  pT:"Six principles", pL:"Every choice below comes from these.",
+  principles:[
+    ["Knowledge matters more","You cannot judge an AI answer in a field you know nothing about. Facts, vocabulary and fluency stay at the core, built through practice and retrieval."],
+    ["Effort is the point","Learning happens through productive struggle. In class, AI acts as a tutor that asks questions and holds back the answer."],
+    ["Assess the person and the process","Anything produced unsupervised can be AI-made. Evidence comes from device-free exams, oral defences, live performance and documented process."],
+    ["Human skills move to the core","Speaking, listening, collaboration, making physical things and ethical reasoning get timetabled hours and real assessment."],
+    ["AI literacy starts at 5","Children learn what AI is, how it fails and when to leave it out, long before they are allowed to rely on it."],
+    ["Every learner has a tutor; teachers coach","AI absorbs drill, explanation and first-pass feedback. Teacher time shifts to discussion, feedback on thinking, and relationships."]],
+  gT:"The graduate profile", gL:"Six capabilities every learner leaves with at 18, each backed by evidence AI cannot fake.",
+  profile:[
+    ["Deep foundations","Reads complex texts closely, writes clear arguments unaided, fluent with number, algebra and data, with broad knowledge of science, history, geography and the arts.","Device-free written exams"],
+    ["Independant thinking","Builds and attacks arguments, spots flawed reasoning and statistics, changes their mind on evidence.","Oral defences, debates"],
+    ["Working with AI","Breaks a problem into tasks for AI, verifies outputs against sources, knows when to leave it out, understands bias, privacy and how models work.","AI-use logs, audits of AI output"],
+    ["Making","Has shipped real things: a product, a piece of code, a built object, a campaign, a small business.","Capstone shown to an outside panel"],
+    ["Human connection","Speaks with confidence, listens well, works in and leads teams, handles disagreement.","Live presentations, peer and coach review"],
+    ["Agency and character","Sets their own goals, persists, manages attention and screens, acts ethically, looks after their wellbeing.","Self-directed project, portfolio reflections"]],
+  sT:"Five strands on a shared base", sL:"Foundations dominate early. Projects and AI work grow as the base gets solid. Thinking and AI is the new strand.",
+  strands:[
+    ["A","Foundations",["Reading","Writing by hand","Mathematics","Second language"]],
+    ["B","Knowledge of the world",["Sciences","History","Geography","Litterature","The arts"]],
+    ["C","Thinking and AI",["Logic and argument","Statistics","Computing","How AI works","Verifying AI","AI ethics"]],
+    ["D","Making and projects",["Term projects","Design","Engineering","Entrepreneurship","Capstone"]],
+    ["E","Human and self",["Oracy","Collaboration","Civics and ethics","Wellbeing","Sport"]]],
+  newTag:"New",
+  base:"Shared base: AI-use levels 0 to 4 · assessment AI cannot fake · teachers as coaches",
+  shareT:"Share of the school week",
+  stagesShort:[["Primary","ages 5 to 11"],["Middle","ages 11 to 14"],["Upper","ages 14 to 18"]],
+  prT:"Progression by stage", prL:"Children meet AI as a subject before they use it as a tool, and earn independence with it as their own foundations firm up.",
+  dt:["Core focus","Relationship with AI","Signature experience"],
+  stages:[
+    ["Primary","5 to 11","Reading, writing by hand, number fluency, curiosity about the world, play and making.","Learn about AI, rarely use it alone: a voice tutor that asks questions, teacher-led demos, unplugged lessons on how machines learn.","Each term a class “Can we trust it?” investigation, testing an AI against the facts they learned."],
+    ["Middle","11 to 14","Knowledge-rich subjects, extended writing, algebra and data, debate.","AI as tutor and critic: students draft first, then use AI feedback, and log every use.","A cross-subject project per term, defended orally to a panel of teachers."],
+    ["Upper","14 to 18","Specialisation in 3 to 4 subjects, research, statistics, entrepreneurship.","AI as collaborator and tool under direction: students run multi-step AI workflows and answer for the result.","Year-long capstone solving a real problem for an outside client, judged by an external panel."]],
+  msT:"The Thinking and AI strand, milestone by milestone",
+  ms:[["Age 7","Explains that AI is built by people from examples, can be wrong, and is not alive."],
+      ["Age 11","Catches an AI making a factual error and corrects it from a book or a teacher. Knows what personal data is and why to protect it."],
+      ["Age 14","Gets useful help from an AI tutor without letting it do the thinking. Compares two AI answers against a source. Explains bias with a real example."],
+      ["Age 16","Explains how a language model is trained and why it makes things up. Writes a simple program that calls a model. Judges when AI use is dishonest."],
+      ["Age 18","Plans and runs a multi-step project with AI agents, verifies every claim, documents decisions, and argues the ethics of an AI deployment in public."]],
+  lT:"How AI is used in class", lL:"Every task carries one of five AI-use levels, printed on the assignment, so students never have to guess what counts as cheating.",
+  levels:[
+    ["0","No AI","Nothing. Paper, books, the teacher.","Handwriting, mental maths, reading, quizzes, exams"],
+    ["1","Tutor","Asks questions, gives hints, explains a concept. Never hands over the answer.","Homework practice, revision, catching up"],
+    ["2","Critic","Gives feedback on work the student already produced. The student decide what to change.","Essay drafts, lab write-ups, code review"],
+    ["3","Collaborator","Co-creates, with every use logged and disclosed.","Research projects, presentations, design"],
+    ["4","Directed tool","Does whole sub-tasks under the student's direction. The student owns and defends the result.","Capstone, data analysis, building software"]],
+  levelWord:"Level",
+  rulesT:"Rules at every level",
+  rules:["Under-13s use only school-managed tools: no ads, no training on student data, tutor mode by default.","Foundations mornings are device-free in primary and middle school.","At levels 2 to 4 the student keeps an AI-use log: what they asked, what they kept, what they checked and how.","Students may always choose a lower level than allowed.","AI never makes a high-stakes call about a child (grades, placement, discipline) without a teacher reviewing it.","Families get a plain-language page on tools used, data stored, and how to opt out."],
+  aT:"Assessment AI cannot fake", aL:"Unsupervised take-home work no longer counts as proof of individual skill unless the student defends it in person. From age 14, grades come from this mix.",
+  assess:[[35,"Device-free written exams","Knowledge and fluency held in the student's own head."],
+          [20,"Oral defence","A 10 to 15 minute viva on their own work: they can explain, extend and justify it."],
+          [20,"Process portfolio","Drafts, AI-use logs, reflections, how the work evolved."],
+          [15,"Live performance","Debates, presentations, team challenges, lab practicals."],
+          [10,"Capstone, outside panel","They can deliver something real and useful."]],
+  more:[["Frequent low-stakes retrieval","Short quizzes several times a week, often run by the AI tutor, inform the teacher and never count toward grades."],
+        ["Testing AI skill directly","“Here is an AI-written report with five errors. Find and fix them.” Or: get a correct answer from this model and show your verification."],
+        ["Reports describe the learner","A one-page profile against the six graduate capabilities goes home each term."]],
+  wT:"A week at 13", wL:"Mornings are device-free and knowledge-heavy. Afternoons are studio time, where AI comes in at the level each task allows.",
+  days:["Time","Monday","Tuesday","Wednesday","Thursday","Friday"],
+  week:[
+    ["08:30 to 09:00",[["Silent reading"],["Retrieval quiz"],["Silent reading"],["Retrieval quiz"],["Goals check-in with coach"]]],
+    ["09:00 to 10:30",[["Maths",0],["English: extended writing by hand",0],["Maths",0],["Second language",0],["English: novel seminar",0]]],
+    ["10:45 to 12:15",[["Science"],["History"],["Geography"],["Science practical"],["Arts"]]],
+    ["13:00 to 14:30",[["Studio: term project",3],["Thinking and AI: fact-check an AI history essay",2],["Studio: term project",3],["Computing: build a quiz app",3],["Project crit: teams present to peers"]]],
+    ["14:45 to 15:30",[["Sport"],["Debate club"],["Wellbeing and civics"],["Sport"],["Tutor sessions for anyone behind",1]]]],
+  keyNone:"No AI level set",
+  wNote:"Homework is 30 to 45 minutes a night, mostly practice with the AI tutor at level 1, plus reading.",
+  rT:"Rollout in three years", rL:"The curriculum lives or dies on teachers, so it starts with them and moves one gate at a time. If pilot exam results drop at Gate 2, the pilot repeats for a year.",
+  phases:[["Year 0","Prepare",["Teachers co-design the units","Tools chosen and privacy-reviewed","40 hours of training","Sessions for families"]],
+          ["Year 1","Pilot",["One year group per stage: ages 7, 12 and 15","AI-use levels and oral defences go live"]],
+          ["Year 2","Expand",["All ages 11 to 18","New assessment mix counts for grades"]],
+          ["Year 3","Whole school",["All ages 5 to 18","External capstone panels","First yearly review of strand C"]]],
+  gates:[["Gate 1","Pilot teachers trained; tools pass privacy review."],["Gate 2","Pilot exam results hold or improve."],["Gate 3","Teachers and families find it workable."]],
+  tT:"What changes for teachers",
+  teachers:["Less time explaining and marking first drafts, more time on discussion, feedback on thinking, oral defences and coaching.","40 hours of training in year one: how AI works, running the five levels, conducting a viva, assessing a portfolio.","An AI assistant for lesson prep and admin, with the time saved protected for students.","One AI lead teacher per 150 students keeps tools, the levels policy and family communication up to date."],
+  riskT:"Risks and answers",
+  risks:[["Students outsource thinking and learn less","Device-free mornings, level 0 exams, oral defences, tutor-only AI below 13."],
+         ["The gap widens between kids with AI at home and without","Every tool provided by the school; tutor time timetabled in school."],
+         ["Privacy harm to minors","School-managed tools only, no training on student data, a published data page for families."],
+         ["Teachers overwhelmed or sceptical","Phased rollout, paid training time, teachers co-design the units in year 0."],
+         ["Tools change faster than the curriculum","Strand C reviewed every year; principles and assessment stay stable."],
+         ["Too much screen time","Screen limits by age, attention habits taught in strand E, sport and making stay physical."]],
+  foot:["Florent Sciberras, October 2026","Thoughts? I'm <a href=\"https://x.com/FSciberras\">@FSciberras</a> on X"]
+},
+fr:{
+  bar:"L'école à l'ère de l'IA",
+  eyebrow:"Un programme de 5 à 18 ans",
+  title:"Une école pensée pour <em>l'ère de l'IA</em>",
+  lead:"L'IA produit en quelques secondes la dissertation, le code et la correction détaillée, donc une école qui note des productions finies note la machine. Ce programme garde ce que l'IA ne peut pas donner à un enfant, et apprend aux élèves à diriger et vérifier les machines.",
+  meta:["Florent Sciberras","Octobre 2026"],
+  toc:[["principles","Principes"],["profile","Profil du diplômé"],["strands","Piliers"],["stages","Par cycle"],["levels","L'IA en classe"],["assessment","Évaluation"],["week","Une semaine"],["rollout","Déploiement"]],
+  pT:"Six principes", pL:"Chaque choix découle de ces principes.",
+  principles:[
+    ["Les connaissances comptent davantage","On ne peut pas juger une réponse de l'IA dans un domaine qu'on ignore. Faits, vocabulaire et automatismes restent au cœur, construits par l'entraînement et la mémorisation active."],
+    ["L'effort est le but","On apprend en se confrontant à la difficulté. En classe, l'IA est un tuteur qui pose des questions et garde la réponse pour lui."],
+    ["Évaluer la personne et la démarche","Tout travail fait sans surveillance peut être fait par une IA. La preuve vient des examens sans écran, des soutenances, des prestations en direct et d'une démarche documentée."],
+    ["Les compétences humaines au centre","Prise de parole, écoute, coopération, fabrication d'objets réels et raisonnement éthique ont des heures à l'emploi du temps et une vraie évaluation."],
+    ["La culture de l'IA dès 5 ans","Les enfants apprennent ce qu'est l'IA, comment elle se trompe et quand s'en passer, bien avant d'avoir le droit de s'y appuyer."],
+    ["Un tuteur pour chaque élève ; des enseignants qui accompagnent","L'IA prend en charge l'entraînement, les explications et les premiers retours. Le temps des enseignants va à la discussion, aux retours sur le raisonnement et à la relation."]],
+  gT:"Le profil du diplômé", gL:"Six capacités acquises par chaque élève à 18 ans, chacune attestée par une preuve que l'IA ne peut pas falsifier.",
+  profile:[
+    ["Bases solides","Lit des textes complexes avec précision, rédige seul une argumentation claire, à l'aise avec les nombres, l'algèbre et les données, avec une large culture en sciences, histoire, géographie et arts.","Examens écrits sans écran"],
+    ["Pensée autonome","Construit et critique des arguments, repère les raisonnements et statistiques fautifs, change d'avis face aux preuves.","Soutenances orales, débats"],
+    ["Travailler avec l'IA","Découpe un problème en tâches pour l'IA, vérifie ses résultats aux sources, sait quand s'en passer, comprend les biais, la vie privée et le fonctionnement des modèles.","Journaux d'usage, audits de textes d'IA"],
+    ["Faire","À mené à bien des réalisations concrètes : un produit, un programme, un objet fabriqué, une campagne, une petite entreprise.","Projet final devant un jury extérieur"],
+    ["Lien humain","S'exprime avec assurance, écoute, travaille en équipe et la dirige, gère les désaccords.","Présentations, retours des pairs et du tuteur"],
+    ["Autonomie et caractère","Se fixe ses objectifs, persévère, gère son attention et ses écrans, agit de façon éthique, prend soin de son bien-être.","Projet personnel, réflexions du portfolio"]],
+  sT:"Cinq piliers sur un socle commun", sL:"Les fondamentaux dominent au début. Les projets et le travail avec l'IA grandissent à mesure que la base se consolide. Pensée et IA est le nouveau pilier.",
+  strands:[
+    ["A","Fondamentaux",["Lecture","Écrire à la main","Mathématiques","Langue vivante"]],
+    ["B","Connaissance du monde",["Sciences","Histoire","Géographie","Littérature","Arts"]],
+    ["C","Pensée et IA",["Logique et argumentation","Statistiques","Informatique","Comprendre l'IA","Vérifier l'IA","Éthique de l'IA"]],
+    ["D","Faire et projets",["Projets du trimestre","Design","Ingénierie","Entrepreneuriat","Projet final"]],
+    ["E","Humain et soi",["Oral","Coopération","Civisme et éthique","Bien-être","Sport"]]],
+  newTag:"Nouveau",
+  base:"Socle : niveaux d'usage de l'IA 0 à 4 · évaluation que l'IA ne peut truquer · enseignants coachs",
+  shareT:"Part de la semaine scolaire",
+  stagesShort:[["Primaire","5 à 11 ans"],["Collège","11 à 14 ans"],["Lycée","14 à 18 ans"]],
+  prT:"Progression par cycle", prL:"Les enfants découvrent l'IA comme objet d'étude avant de l'utiliser comme outil, et gagnent en autonomie avec elle à mesure que leurs bases se consolident.",
+  dt:["Priorités","Rapport à l'IA","Expérience phare"],
+  stages:[
+    ["Primaire","5 à 11 ans","Lecture, écriture à la main, calcul, curiosité pour le monde, jeu et fabrication.","On apprend l'IA, on l'utilise rarement seul : un tuteur vocal qui pose des questions, des démonstrations guidées, des activités débranchées sur l'apprentissage des machines.","Chaque trimestre, une enquête de classe « Peut-on lui faire confiance ? » qui confronte une IA aux connaissances apprises."],
+    ["Collège","11 à 14 ans","Disciplines riches en connaissances, écrits longs, algèbre et données, débat.","L'IA comme tuteur et critique : l'élève rédige d'abord, sollicite ensuite les retours de l'IA, et consigne chaque usage.","Un projet interdisciplinaire par trimestre, soutenu à l'oral devant un jury d'enseignants."],
+    ["Lycée","14 à 18 ans","Spécialisation dans 3 ou 4 disciplines, recherche, statistiques, entrepreneuriat.","L'IA comme collaboratrice et outil dirigé : l'élève pilote des enchaînements de tâches avec l'IA et répond du résultat.","Un projet final sur l'année pour un vrai commanditaire extérieur, jugé par un jury externe."]],
+  msT:"Le pilier Pensée et IA, étape par étape",
+  ms:[["7 ans","Explique que l'IA est construite par des humains à partir d'exemples, qu'elle peut se tromper et qu'elle n'est pas vivante."],
+      ["11 ans","Repère une erreur factuelle d'une IA et la corrige avec un livre ou l'enseignant. Sait ce que sont les données personnelles et pourquoi les protéger."],
+      ["14 ans","Se fait aider par un tuteur IA sans lui laisser la réflexion. Compare deux réponses d'IA à une source. Explique un biais avec un exemple réel."],
+      ["16 ans","Explique comment un modèle de language est entraîné et pourquoi il invente. Écrit un petit programme qui appelle un modèle. Juge quand un usage de l'IA est malhonnête."],
+      ["18 ans","Planifie et mène un projet en plusieurs étapes avec des agents IA, vérifie chaque affirmation, documente ses choix et défend en public l'éthique d'un déploiement d'IA."]],
+  lT:"L'IA en classe", lL:"Chaque devoir porte l'un des cinq niveaux d'usage de l'IA, inscrit sur la consigne : les élèves n'ont jamais à deviner ce qui compte comme de la triche.",
+  levels:[
+    ["0","Sans IA","Rien. Papier, livres, enseignant.","Écriture, calcul mental, lecture, interrogations, examens"],
+    ["1","Tuteur","Pose des questions, donne des indices, explique une notion. Ne donne jamais la réponse.","Exercices, révisions, rattrapage"],
+    ["2","Critique","Commente un travail déjà produit par l'élève. L'élève décide quoi modifier.","Brouillons, comptes rendus de TP, relecture de code"],
+    ["3","Collaborateur","Co-crée, chaque usage étant consigné et déclaré.","Projets de recherche, exposés, design"],
+    ["4","Outil dirigé","Réalise des sous-tâches entières sous la direction de l'élève, qui assume et défend le résultat.","Projet final, analyse de données, logiciels"]],
+  levelWord:"Niveau",
+  rulesT:"Règles valables à tous les niveaux",
+  rules:["Avant 13 ans, uniquement des outils gérés par l'école : sans publicité, sans entraînement sur les données des élèves, en mode tuteur par défaut.","Au primaire et au collège, les matinées de fondamentaux se font sans écran.","Aux niveaux 2 à 4, l'élève tient un journal d'usage : ce qu'il a demandé, gardé, vérifié, et comment.","Un élève peut toujours choisir un niveau inférieur à celui autorisé.","L'IA ne prend jamais seule une décision importante sur un enfant (notes, orientation, discipline) sans relecture par un enseignant.","Les familles reçoivent une page claire : outils utilisés, données conservées, comment refuser."],
+  aT:"Une évaluation que l'IA ne peut truquer", aL:"Un travail fait à la maison sans surveillance ne prouve plus une compétence individuelle, sauf si l'élève le défend en personne. À partir de 14 ans, la note finale se compose ainsi.",
+  assess:[[35,"Examens écrits sans écran","Connaissances et automatismes dans la tête de l'élève."],
+          [20,"Soutenance orale","10 à 15 minutes sur son propre travail : il sait l'expliquer, le prolonger, le justifier."],
+          [20,"Portfolio de démarche","Brouillons, journaux d'usage de l'IA, réflexions, évolution du travail."],
+          [15,"Prestations en direct","Débats, exposés, défis en équipe, travaux pratiques."],
+          [10,"Projet final, jury extérieur","Capacité à livrer quelque chose de réel et utile."]],
+  more:[["Des interrogations courtes et fréquentes","Plusieurs quiz par semaine, souvent animés par le tuteur IA, renseignent l'enseignant et ne comptent jamais dans la note."],
+        ["Évaluer directement la maîtrise de l'IA","« Voici un rapport écrit par une IA avec cinq erreurs : trouve-les et corrige-les. » Ou : obtiens de ce modèle une réponse juste et montre ta vérification."],
+        ["Des bulletins qui décrivent l'élève","Chaque trimestre, une page sur les six capacités du profil du diplômé part dans les familles."]],
+  wT:"Une semaine à 13 ans", wL:"Les matinées sont sans écran et riches en connaissances. Les après-midi sont des ateliers où l'IA intervient au niveau autorisé par chaque tâche.",
+  days:["Horaire","Lundi","Mardi","Mercredi","Jeudi","Vendredi"],
+  week:[
+    ["8 h 30 à 9 h",[["Lecture silencieuse"],["Quiz de mémorisation"],["Lecture silencieuse"],["Quiz de mémorisation"],["Point objectifs avec le tuteur"]]],
+    ["9 h à 10 h 30",[["Maths",0],["Français : rédaction longue à la main",0],["Maths",0],["Langue vivante",0],["Français : séminaire sur un roman",0]]],
+    ["10 h 45 à 12 h 15",[["Sciences"],["Histoire"],["Géographie"],["TP de sciences"],["Arts"]]],
+    ["13 h à 14 h 30",[["Atelier : projet du trimestre",3],["Pensée et IA : vérifier un essai d'histoire écrit par une IA",2],["Atelier : projet du trimestre",3],["Informatique : créer une appli de quiz",3],["Revue de projets : les équipes présentent"]]],
+    ["14 h 45 à 15 h 30",[["Sport"],["Club de débat"],["Bien-être et civisme"],["Sport"],["Soutien pour ceux qui sont en retard",1]]]],
+  keyNone:"Sans niveau défini",
+  wNote:"Les devoirs durent 30 à 45 minutes par soir : surtout de l'entraînement avec le tuteur IA au niveau 1, et de la lecture.",
+  rT:"Un déploiement en trois ans", rL:"Tout repose sur les enseignants : le programme commence par eux et avance d'un jalon à l'autre. Si les résultats aux examens baissent au jalon 2, le pilote est reconduit un an.",
+  phases:[["Année 0","Préparer",["Unités co-conçues par les enseignants","Outils choisis et validés (vie privée)","40 heures de formation","Réunions avec les familles"]],
+          ["Année 1","Pilote",["Un niveau par cycle : 7, 12 et 15 ans","Niveaux d'usage et soutenances en place"]],
+          ["Année 2","Étendre",["Tous les 11 à 18 ans","La nouvelle évaluation compte pour les notes"]],
+          ["Année 3","Partout",["Tous les 5 à 18 ans","Jurys externes pour le projet final","Première revue annuelle du pilier C"]]],
+  gates:[["Jalon 1","Enseignants pilotes formés ; outils validés."],["Jalon 2","Résultats aux examens stables ou en hausse."],["Jalon 3","Enseignants et familles jugent le dispositif viable."]],
+  tT:"Ce qui change pour les enseignants",
+  teachers:["Moins de temps à expliquer et à corriger des premiers jets, plus de temps pour la discussion, les retours sur le raisonnement, les soutenances et l'accompagnement.","40 heures de formation la première année : fonctionnement de l'IA, mise en œuvre des cinq niveaux, conduite d'une soutenance, évaluation d'un portfolio.","Un assistant IA pour préparer les cours et l'administratif, et le temps gagné va aux élèves.","Un enseignant référent IA pour 150 élèves suit les outils, la charte des niveaux et la communication aux familles."],
+  riskT:"Risques et réponses",
+  risks:[["Les élèves délèguent leur réflexion et apprennent moins","Matinées sans écran, examens au niveau 0, soutenances orales, IA en mode tuteur seulement avant 13 ans."],
+         ["L'écart se creuse entre élèves équipés à la maison et les autres","Tous les outils fournis par l'école ; le temps de tutorat a lieu en classe."],
+         ["Atteintes à la vie privée de mineurs","Outils gérés par l'école uniquement, aucun entraînement sur les données des élèves, page données publiée pour les familles."],
+         ["Enseignants débordés ou sceptiques","Déploiement progressif, formation rémunérée, unités co-conçues en année 0."],
+         ["Les outils évoluent plus vite que le programme","Pilier C revu chaque année ; principes et évaluation restent stables."],
+         ["Trop d'écrans","Limites d'écran par âge, habitudes d'attention enseignées dans le pilier E, sport et fabrication restent physiques."]],
+  foot:["Florent Sciberras, octobre 2026","Vos retours ? Je suis <a href=\"https://x.com/FSciberras\">@FSciberras</a> sur X"]
+}};
+
+const SHARE=[[45,20,5,10,20],[30,30,10,15,15],[20,30,15,20,15]];
+const SC=["var(--s-a)","var(--s-b)","var(--s-c)","var(--s-d)","var(--s-e)"];
+const LV=[["var(--l0)","var(--l-ink)"],["var(--l1)","var(--l-ink)"],["var(--l2)","var(--l-ink)"],["var(--l3)","var(--l-ink-strong)"],["var(--l4)","var(--l-ink-strong)"]];
+const lvStyle=n=>`--bg:${LV[n][0]};--fg:${LV[n][1]}`;
+
+function render(lang){
+  const t=T[lang];
+  document.documentElement.lang=lang;
+  document.getElementById("barName").textContent=t.bar;
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===lang)));
+  const html=`
+  <header class="cover"><div class="wrap">
+    <span class="label">${t.eyebrow}</span>
+    <h1>${t.title}</h1>
+    <p class="lead">${t.lead}</p>
+    <div class="meta">${t.meta.map(m=>`<span class="label">${m}</span>`).join("")}</div>
+    <nav class="toc" aria-label="Sections">${t.toc.map(([id,n])=>`<a href="#${id}">${n}</a>`).join("")}</nav>
+  </div></header>
+
+  <section id="principles"><div class="wrap">
+    <div class="head"><h2>${t.pT}</h2><p class="lead">${t.pL}</p></div>
+    <ol class="principles">${t.principles.map(([h,p])=>`<li><h3>${h}</h3><p>${p}</p></li>`).join("")}</ol>
+  </div></section>
+
+  <section id="profile"><div class="wrap">
+    <div class="head"><h2>${t.gT}</h2><p class="lead">${t.gL}</p></div>
+    <div class="profile">${t.profile.map(([c,l,p])=>`<div class="cap"><h3>${c}</h3><p>${l}</p><span class="proof">${p}</span></div>`).join("")}</div>
+  </div></section>
+
+  <section id="strands"><div class="wrap">
+    <div class="head"><h2>${t.sT}</h2><p class="lead">${t.sL}</p></div>
+    <div class="strands">${t.strands.map(([L,n,items],i)=>`<div class="strand${i===2?" new":""}" style="--c:${SC[i]}"><span class="letter">${L}</span><h3>${n}</h3>${i===2?`<span class="tag">${t.newTag}</span>`:""}<ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="base">${t.base}</div>
+    <div class="share">
+      <h3>${t.shareT}</h3>
+      ${SHARE.map((row,s)=>`<div class="share-row"><div class="who">${t.stagesShort[s][0]}<small>${t.stagesShort[s][1]}</small></div><div class="stack" role="img" aria-label="${t.stagesShort[s][0]}: ${row.map((v,i)=>t.strands[i][1]+" "+v+"%").join(", ")}">${row.map((v,i)=>`<span style="flex:${v} 1 0;--c:${SC[i]}" title="${t.strands[i][1]} ${v}%">${v>=8?v+"%":""}</span>`).join("")}</div></div>`).join("")}
+      <div class="legend">${t.strands.map(([L,n],i)=>`<span style="--c:${SC[i]}"><i></i>${L}. ${n}</span>`).join("")}</div>
+    </div>
+  </div></section>
+
+  <section id="stages"><div class="wrap">
+    <div class="head"><h2>${t.prT}</h2><p class="lead">${t.prL}</p></div>
+    <div class="stages">${t.stages.map(([n,a,f,ai,sig])=>`<div class="stage"><div><span class="ages">${a}</span><h3 style="font-size:1.5rem;margin-top:4px">${n}</h3></div><dl><div><dt>${t.dt[0]}</dt><dd>${f}</dd></div><div><dt>${t.dt[1]}</dt><dd>${ai}</dd></div><div><dt>${t.dt[2]}</dt><dd>${sig}</dd></div></dl></div>`).join("")}</div>
+    <div class="col" style="margin-top:56px"><h3 style="font-size:1.3rem">${t.msT}</h3>
+      <div class="milestones" style="margin-top:20px">${t.ms.map(([a,p])=>`<div class="ms"><b>${a}</b><p>${p}</p></div>`).join("")}</div>
+    </div>
+  </div></section>
+
+  <section id="levels"><div class="wrap">
+    <div class="head"><h2>${t.lT}</h2><p class="lead">${t.lL}</p></div>
+    <div class="levels">${t.levels.map(([n,name,may,ex],i)=>`<div class="lvl" style="${lvStyle(i)}"><span class="n">${t.levelWord} ${n}</span><h3>${name}</h3><p>${may}</p><p class="ex">${ex}</p></div>`).join("")}</div>
+    <h3 style="margin-top:44px">${t.rulesT}</h3>
+    <ul class="rules" style="margin-top:16px">${t.rules.map(r=>`<li>${r}</li>`).join("")}</ul>
+  </div></section>
+
+  <section id="assessment"><div class="wrap">
+    <div class="head"><h2>${t.aT}</h2><p class="lead">${t.aL}</p></div>
+    <div class="assess-bar" role="img" aria-label="${t.assess.map(a=>a[1]+" "+a[0]+"%").join(", ")}">${t.assess.map(([p],i)=>{const o=[88,64,44,28,16][i];return `<span class="${o>50?"dark":""}" style="flex:${p} 1 0;--o:${o}%">${p}%</span>`}).join("")}</div>
+    <div class="assess">${t.assess.map(([p,h,d])=>`<div class="arow"><span class="pct">${p}%</span><h3>${h}</h3><p>${d}</p></div>`).join("")}</div>
+    <div class="more">${t.more.map(([h,p])=>`<div><h3>${h}</h3><p>${p}</p></div>`).join("")}</div>
+  </div></section>
+
+  <section id="week"><div class="wrap">
+    <div class="head"><h2>${t.wT}</h2><p class="lead">${t.wL}</p></div>
+    <div class="tt-scroll"><table class="tt"><thead><tr>${t.days.map(d=>`<th scope="col">${d}</th>`).join("")}</tr></thead><tbody>
+      ${t.week.map(([time,cells])=>`<tr><td class="time">${time}</td>${cells.map(([txt,l])=>`<td><div class="cell" ${l!==undefined?`style="${lvStyle(l)}"`:""}>${l!==undefined?`<small>${t.levelWord} ${l}</small>`:""}${txt}</div></td>`).join("")}</tr>`).join("")}
+    </tbody></table></div>
+    <div class="keys">${t.levels.map(([n,name],i)=>`<span><i style="${lvStyle(i)}"></i>${n} · ${name}</span>`).join("")}<span><i style="--bg:var(--paper-2)"></i>${t.keyNone}</span></div>
+    <p style="margin-top:18px;color:var(--ink-2);font-size:.96rem">${t.wNote}</p>
+  </div></section>
+
+  <section id="rollout"><div class="wrap">
+    <div class="head"><h2>${t.rT}</h2><p class="lead">${t.rL}</p></div>
+    <div class="road">${t.phases.map(([y,n,items],i)=>`<div class="phase"><span class="yr">${y}</span><h3>${n}</h3><ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul></div>${i<3?`<div class="gate" aria-label="${t.gates[i][0]}"></div>`:""}`).join("")}</div>
+    <div class="gates">${t.gates.map(([g,p])=>`<div><b>${g}</b><p>${p}</p></div>`).join("")}</div>
+    <div class="two">
+      <div><h3>${t.tT}</h3><ul>${t.teachers.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      <div><h3>${t.riskT}</h3><div class="risks">${t.risks.map(([r,a])=>`<div class="risk"><b>${r}</b><p>${a}</p></div>`).join("")}</div></div>
+    </div>
+  </div></section>
+
+  <footer><div class="wrap"><span>${t.foot[0]}</span><span>${t.foot[1]}</span></div></footer>`;
+  document.getElementById("app").innerHTML=html;
+  try{localStorage.setItem("curriculum-lang",lang)}catch(e){}
+}
+
+let start="en";
+if(location.hash==="#fr")start="fr";
+else{try{const s=localStorage.getItem("curriculum-lang");if(s==="fr"||s==="en")start=s}catch(e){}}
+render(start);
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>render(b.dataset.lang)));
+</script>
+
+</body>
+</html>
